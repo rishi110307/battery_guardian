@@ -1,25 +1,43 @@
+```yaml
 name: Build Android APK
+
 on:
   workflow_dispatch:
   push:
     paths:
       - 'frontend/**'
       - '.github/workflows/android.yml'
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
           channel: stable
+
       - name: Get dependencies
         working-directory: frontend
         run: flutter pub get
+
+      - name: Check Android project
+        working-directory: frontend
+        run: |
+          cat android/app/src/main/AndroidManifest.xml
+          cat android/app/src/main/kotlin/com/batteryguardian/battery_guardian/MainActivity.kt
+
       - name: Build APK
         working-directory: frontend
         run: flutter build apk --release
-      - uses: actions/upload-artifact@v4
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
           name: battery-guardian-apk
           path: frontend/build/app/outputs/flutter-apk/app-release.apk
+```
