@@ -1,0 +1,6 @@
+This zip includes the Flutter source and Android manifest, but not every generated Flutter/Gradle/CMake binary wrapper file.
+From the repository root, generate platform scaffolding if needed:
+  cd frontend
+  flutter create --platforms=android,windows .
+Then keep the source files in lib/ and merge the AndroidManifest.xml permissions/metadata as appropriate.
+The easiest route is to run `flutter create --platforms=android,windows frontend` before copying this starter's `lib/`, `pubspec.yaml`, and manifest into the generated project.
