@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+windows-app/build/
+windows-app/dist/
+windows-app/*.spec
+android-app/.gradle/
+android-app/build/
+android-app/app/build/
+.idea/
+.vscode/
+.env

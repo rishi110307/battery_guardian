@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>100% Charge Guardian</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#101827;color:#eef4ff;display:grid;min-height:100vh;place-items:center}
+main{width:min(720px,92vw);padding:32px;border:1px solid #33445d;border-radius:22px;background:#172338;box-shadow:0 20px 60px #0005}
+h1{margin-top:0}p{line-height:1.6;color:#c2cee0}.pill{display:inline-block;padding:8px 12px;border-radius:30px;background:#193e35;color:#7af0bd}
+a{color:#83b7ff}code{color:#9fe6c9}
+</style></head>
+<body><main>
+<span class="pill">BATTERY AWARENESS</span>
+<h1>100% Charge Guardian</h1>
+<p>Monitor battery level and receive reminders when the battery reaches 100% or falls below 15%.</p>
+<h2>Rules</h2>
+<ul><li>At 100% while plugged in: full-charge reminder.</li><li>Below 15% and unplugged: connect-charger warning.</li></ul>
+<h2>Optional backend</h2>
+<p>Run the FastAPI server and open <a href="http://127.0.0.1:8000/docs">API documentation</a> on the same computer.</p>
+<p><strong>Note:</strong> This dashboard is informational. It does not read device battery status by itself and cannot lock a phone or laptop.</p>
+</main></body></html>
