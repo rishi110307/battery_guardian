@@ -1,3 +1,4 @@
+
 name: Build Charge Guardian Android APK
 
 on:
@@ -13,6 +14,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,25 +25,18 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Install Android SDK components
-        run: |
-          sdkmanager --list
-          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
-
-      - name: Make Gradle wrapper executable
-        working-directory: android-app
-        run: |
-          if [ ! -f ./gradlew ]; then
-            echo "ERROR: android-app/gradlew is missing. The Android project must include its Gradle wrapper."
-            exit 1
-          fi
-          chmod +x ./gradlew
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          packages: "platform-tools"
 
       - name: Build debug APK
         working-directory: android-app
-        run: ./gradlew assembleDebug --stacktrace
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug --stacktrace
 
-      - name: Upload APK artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: charge-guardian-android-apk
